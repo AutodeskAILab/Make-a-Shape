@@ -3,7 +3,8 @@ import torch
 from src.diffusion_progressive_module import (
     Trainer_Diffusion_Progressive_Network,
 )
-
+import os
+from huggingface_hub import hf_hub_download
 
 def load_model(
     checkpoint_path,
@@ -31,3 +32,26 @@ def load_model(
 
     return model
 
+
+class Model():
+
+    @classmethod
+    def from_pretrained(
+        cls, pretrained_model_name_or_path: str
+    ):
+        if os.path.isfile(pretrained_model_name_or_path):
+            checkpoint_path = pretrained_model_name_or_path
+        else:
+            checkpoint_path = hf_hub_download(
+                repo_id=pretrained_model_name_or_path, filename="checkpoint.ckpt"
+            )
+
+        device = (
+            torch.device("cuda") if torch.cuda.is_available() else torch.device("cpu")
+        )
+        model = model = load_model(
+            checkpoint_path,
+            compile_model=False,
+            device=device,
+        )
+        return model

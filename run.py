@@ -19,7 +19,7 @@ from src.dataset_utils import (
     get_voxel_data,
     get_image_transform
 )
-from src.model_utils import load_model
+from src.model_utils import Model
 
 
 
@@ -163,20 +163,13 @@ model_name = "Progressive_Diffusion_Generator_SV_TO_3D"
 checkpoint_path = "checkpoint.ckpt"
 
 
-device = (
-    torch.device("cuda") if torch.cuda.is_available() else torch.device("cpu")
-)
-print(f"CUDA is available: {torch.cuda.is_available()}")
 
 # Load model
 print(f"Loading {model_name} model")
-model = load_model(
-    checkpoint_path,
-    compile_model=False,
-    device=device,
-)
-if model.args.use_image_conditions:
-    image_transform = get_image_transform(model.args)
+model = Model.from_pretrained(checkpoint_path)
+
+if hasattr(model, "image_transform"):
+    image_transform = model.image_transform
 else:
     image_transform = None
 
