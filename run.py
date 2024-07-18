@@ -1,16 +1,8 @@
-import base64
-import io
-import logging
-import tempfile
-import traceback
+
 from pathlib import Path
-from typing import Any, Dict, Tuple
-import torch
-import numpy as np
 import open3d as o3d
 
 from pytorch_lightning import seed_everything
-from PIL import Image
 
 from src.dataset_utils import (
     get_singleview_data,
@@ -28,12 +20,19 @@ def simplify_mesh(obj_path, target_num_faces=1000):
     o3d.io.write_triangle_mesh(obj_path, simplified_mesh)
 
 
-model_name = "Progressive_Diffusion_Generator_SV_TO_3D"
+
 checkpoint_path = "checkpoint.ckpt"
 
 
 def add_args(parser):
     parser.add_argument("image", type=str, nargs="+", help="Path to input image(s).")
+    parser.add_argument(
+        "--model_name",
+        type=str,
+        default="./checkpoint.ckpt",
+        # choices=["SV_TO_3D", "MV_TO_3D", "Voxel_TO_3D"], # TODO: Add these models to Hugginface Hub
+        help="Model name (default: %(default)s).",
+    )
     parser.add_argument(
         "--device",
         type=str,
@@ -71,12 +70,6 @@ def add_args(parser):
         help="Seed for reproducibility (default: %(default)s).",
     )
     parser.add_argument(
-        "--model_name",
-        type=str,
-        default="SV_TO_3D",
-        help="Model name (default: %(default)s).",
-    )
-    parser.add_argument(
         "--output_dir",
         type=str,
         default="examples",
@@ -89,13 +82,14 @@ if __name__ == "__main__":
     add_args(parser)
     args = parser.parse_args()
 
-    print(f"Loading {model_name} model")
-    model = Model.from_pretrained(checkpoint_path)
+    print(f"Loading model")
+    model = Model.from_pretrained(pretrained_model_name_or_path=args.model_name)
 
     if hasattr(model, "image_transform"):
         image_transform = model.image_transform
     else:
         image_transform = None
+
 
     data = get_singleview_data(
         image_file=Path(args.image[0]),
