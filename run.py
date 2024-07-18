@@ -20,10 +20,6 @@ def simplify_mesh(obj_path, target_num_faces=1000):
     o3d.io.write_triangle_mesh(obj_path, simplified_mesh)
 
 
-
-checkpoint_path = "checkpoint.ckpt"
-
-
 def add_args(parser):
     parser.add_argument("image", type=str, nargs="+", help="Path to input image(s).")
     parser.add_argument(
