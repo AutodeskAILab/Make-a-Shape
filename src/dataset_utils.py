@@ -14,6 +14,7 @@ from torchvision.transforms.v2 import (
     RandomAffine,
 )
 
+
 def load_arr_file(file, keys, file_type):
     assert file_type in ["h5df", "npz"]
 
@@ -47,7 +48,6 @@ def make_a_grid(occupancy_arr, color_numpy, voxel_resolution=32):
     )
     cube_color[occupancy_arr[:, 0], occupancy_arr[:, 1], occupancy_arr[:, 2], 3] = 1
     return cube_color[:-1, :-1, :-1]
-
 
 
 def load_image(path, image_over_white=None):
@@ -141,10 +141,7 @@ def get_multiview_data(image_files, views, image_transform, device):
     file_base_name = uuid.uuid4()
 
     images = [
-        image_transform(load_image(image_file))
-        .to(device)
-        .unsqueeze(0)
-        .float()
+        image_transform(load_image(image_file)).to(device).unsqueeze(0).float()
         for image_file in image_files
     ]
     images = torch.cat(images, dim=0).unsqueeze(0)

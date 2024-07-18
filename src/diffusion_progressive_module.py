@@ -1,4 +1,3 @@
-
 import os
 
 # import math
@@ -8,7 +7,6 @@ import pytorch_lightning as pl
 import torch
 from PIL import Image
 from shutil import copyfile
-
 
 
 from src.clip_mod import get_clip_model, tokenize
@@ -172,9 +170,9 @@ class Trainer_Diffusion_Progressive_Network(pl.LightningModule):
                             # image_data = self.extract_images(data)
                             # visualization.save_normalized_image_matplotlib(image_data[idx].permute(1, 2, 0).detach().cpu().numpy(),
                             #                                                file_name=image_path)
-                            Image.fromarray(
-                                data["images"][idx].cpu().numpy()
-                            ).save(image_path)
+                            Image.fromarray(data["images"][idx].cpu().numpy()).save(
+                                image_path
+                            )
 
                     if (
                         hasattr(self.args, "use_voxel_conditions")
@@ -223,7 +221,6 @@ class Trainer_Diffusion_Progressive_Network(pl.LightningModule):
                     )
                     np.save(wavelet_volume_path, wavelet_volume_pred)
 
-
     ############################################## INPUT FEATURE EXTRACTION ##############################################
     # function for extracting features from inputs
     def extract_input_features(self, data, data_type, is_train=False, to_cuda=False):
@@ -270,7 +267,9 @@ class Trainer_Diffusion_Progressive_Network(pl.LightningModule):
                 hasattr(self.args, "use_image_features_only")
                 and self.args.use_image_features_only
             ):
-                input_features = data["image_features"].type(torch.FloatTensor).to(self.device)
+                input_features = (
+                    data["image_features"].type(torch.FloatTensor).to(self.device)
+                )
                 ## noising if needed
                 if (
                     hasattr(self.args, "use_noised_clip_features")
@@ -375,7 +374,9 @@ class Trainer_Diffusion_Progressive_Network(pl.LightningModule):
             return input_features.float()
 
     ############################################## INFERENCES ##############################################
-    def inference_sample(self, data, data_idx, return_wavelet_volume=False, progress=True):
+    def inference_sample(
+        self, data, data_idx, return_wavelet_volume=False, progress=True
+    ):
         low_data = data["low"].type(torch.FloatTensor).to(self.device)
         if (
             hasattr(self.args, "use_wavelet_conditions")
@@ -638,7 +639,6 @@ class Trainer_Diffusion_Progressive_Network(pl.LightningModule):
             highs_full_indices, highs_full, self.args.max_depth, shape_list
         )
         return highs_full_recon
-
 
 
 def get_noised_image_features(image_features, noise_cond_para):

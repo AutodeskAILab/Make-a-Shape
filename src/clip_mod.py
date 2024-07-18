@@ -314,7 +314,9 @@ def load(
     """
     if name in _MODELS:
         model_path = _download(
-            _MODELS[name], download_root or os.path.expanduser("~/.cache/clip"), locking=True
+            _MODELS[name],
+            download_root or os.path.expanduser("~/.cache/clip"),
+            locking=True,
         )
     elif os.path.isfile(name):
         model_path = name

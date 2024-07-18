@@ -1,4 +1,3 @@
-
 import base64
 import io
 import logging
@@ -17,11 +16,10 @@ from src.dataset_utils import (
     get_singleview_data,
     get_multiview_data,
     get_voxel_data,
-    get_image_transform
+    get_image_transform,
 )
 from src.model_utils import Model
 import argparse
-
 
 
 def simplify_mesh(obj_path, target_num_faces=1000):
@@ -35,12 +33,7 @@ checkpoint_path = "checkpoint.ckpt"
 
 
 def add_args(parser):
-    parser.add_argument(
-        "image",
-        type=str,
-        nargs="+",
-        help="Path to input image(s)."
-    )
+    parser.add_argument("image", type=str, nargs="+", help="Path to input image(s).")
     parser.add_argument(
         "--device",
         type=str,
@@ -89,7 +82,7 @@ def add_args(parser):
         default="examples",
         help="Path to output directory.",
     )
-    
+
 
 if __name__ == "__main__":
     parser = argparse.ArgumentParser()
@@ -108,15 +101,11 @@ if __name__ == "__main__":
         image_file=Path(args.image[0]),
         image_transform=image_transform,
         device=model.device,
-        image_over_white=False
+        image_over_white=False,
     )
     data_idx = 0
 
     model.set_inference_fusion_params(args.scale, args.diffusion_rescale_timestep)
     output_path = model.test_inference(
-        data,
-        data_idx,
-        save_dir=Path(args.output_dir),
-        output_format=args.output_format
+        data, data_idx, save_dir=Path(args.output_dir), output_format=args.output_format
     )
-    

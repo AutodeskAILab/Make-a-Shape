@@ -6,6 +6,7 @@ from src.diffusion_progressive_module import (
 import os
 from huggingface_hub import hf_hub_download
 
+
 def load_model(
     checkpoint_path,
     compile_model=False,
@@ -33,12 +34,10 @@ def load_model(
     return model
 
 
-class Model():
+class Model:
 
     @classmethod
-    def from_pretrained(
-        cls, pretrained_model_name_or_path: str
-    ):
+    def from_pretrained(cls, pretrained_model_name_or_path: str):
         if os.path.isfile(pretrained_model_name_or_path):
             checkpoint_path = pretrained_model_name_or_path
         else:
