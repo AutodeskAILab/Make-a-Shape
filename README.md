@@ -1,4 +1,5 @@
-This is the official codebase for **Make-A-Shape**
+This is the official codebase for the ICML paper **Make-A-Shape: a Ten-Million-scale 3D Shape Model**
+[Project](https://www.research.autodesk.com/publications/generative-ai-make-a-shape/) [Page](https://edward1997104.github.io/make-a-shape/), [ArXiv](https://arxiv.org/abs/2401.11067), [Model](https://github.com/AutodeskAILab/Make-a-Shape), [Demo](https://github.com/AutodeskAILab/Make-a-Shape)
 
 ## Getting Started
 
