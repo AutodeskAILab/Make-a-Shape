@@ -2,6 +2,13 @@ This is the official codebase for the ICML paper **Make-A-Shape: a Ten-Million-s
 
 [Project](https://www.research.autodesk.com/publications/generative-ai-make-a-shape/) [Page](https://edward1997104.github.io/make-a-shape/), [ArXiv](https://arxiv.org/abs/2401.11067), [Model](https://github.com/AutodeskAILab/Make-a-Shape), [Demo](https://github.com/AutodeskAILab/Make-a-Shape)
 
+## Timeline
+- [x] Single-view to 3D inference code
+- [ ] Multi-view to 3D inference code
+- [ ] Point cloud to 3D inference code
+- [ ] 16^3 resolution Voxel to 3D inference code
+- [ ] 32^3 resolution Voxel to 3D inference code
+
 ## Getting Started
 
 ### Installation
