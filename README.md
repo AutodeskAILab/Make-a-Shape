@@ -122,6 +122,6 @@ python run.py --model_name ADSKAILab/Make-A-Shape-voxel-32res-20m --voxel_files 
 | 54        | 360.00                 | -60.00                  |
 
 - **Voxel Input:** A JSON file containing a voxelized representation of the object. The JSON includes:
-  - **resolution:** The grid size of the voxel space (e.g., 16³ or 32³).
+  - **resolution:** The grid size of the voxel space (e.g., 16 or 32).
   - **occupancy:** The indices of occupied voxels.
   - **color:** The RGB values for each occupied voxel. 
