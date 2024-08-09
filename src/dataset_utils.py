@@ -6,6 +6,7 @@ import h5py
 import numpy as np
 import os.path as osp
 import torch
+import json
 
 from PIL import Image
 from torchvision.transforms import Compose, Resize, CenterCrop, ToTensor, Normalize
@@ -156,22 +157,19 @@ def get_multiview_data(image_files, views, image_transform, device):
     return data
 
 
-def get_voxel_data(voxel_file, voxel_resolution, device):
+def get_voxel_data_json(voxel_file, voxel_resolution, device):
     if isinstance(voxel_file, str):
         file_base_name = osp.basename(voxel_file).split(".")[0]
     else:
         file_base_name = uuid.uuid4()
 
-    voxel_data_interface = load_arr_file(
-        file=voxel_file,
-        keys=["occupancy_arr", "color_numpy"],
-        file_type="npz",
-    )
+    with open(voxel_file, "r") as f:
+        voxel_json = json.load(f)
 
-    occupancy_arr, color_numpy = (
-        voxel_data_interface["occupancy_arr"],
-        voxel_data_interface["color_numpy"],
-    )
+    voxel_resolution = voxel_json["resolution"]
+    occupancy_arr = np.array(voxel_json["occupancy"])
+    color_numpy = np.array(voxel_json["color"])
+
     voxel_grid = make_a_grid(
         occupancy_arr,
         color_numpy,
@@ -190,14 +188,14 @@ def get_voxel_data(voxel_file, voxel_resolution, device):
     return data
 
 
-def get_image_transform(args):
+def get_image_transform(args, train_step=False):
 
     transform = []
 
     if (
         hasattr(args, "use_image_augmentation")
         and args.use_image_augmentation
-        and args.split == "train"
+        and train_step
     ):
         transform = transform + [
             RandomAffine(
