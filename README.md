@@ -6,8 +6,8 @@ This is the official codebase for the ICML paper **Make-A-Shape: a Ten-Million-s
 - [x] Single-view to 3D inference code
 - [x] Multi-view to 3D inference code
 - [ ] Point cloud to 3D inference code
-- [x] 16^3 resolution Voxel to 3D inference code
-- [x] 32^3 resolution Voxel to 3D inference code
+- [x] 16³ resolution Voxel to 3D inference code
+- [x] 32³ resolution Voxel to 3D inference code
 
 ## Getting Started
 
