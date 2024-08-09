@@ -42,17 +42,17 @@ python run.py --model_name ADSKAILab/Make-A-Shape-multi-view-20m --multi_view_im
 ```
 
 
-### 16³ Resolution Voxel to 3D
+### Voxel to 3D (16³ Resolution )
 
-This method uses a voxelized representation of the object with a resolution of 16³. The voxel file is a JSON containing the folowing keys: `resolution`, `occupancy`, and `color`
+This model uses a voxelized representation of the object with a resolution of 16³. The voxel file is a JSON containing the folowing keys: `resolution`, `occupancy`, and `color`
 
 ```sh
 python run.py --model_name ADSKAILab/Make-A-Shape-voxel-16res-20m --voxel_files examples/voxel/voxel_16.json --output_dir examples --output_format obj
 ```
 
-### 32³ Resolution Voxel to 3D
+### Voxel to 3D (32³ Resolution )
 
-Similar to the 16³ resolution method, but with higher resolution of 32³. 
+Similar to the 16³ resolution model, but with higher resolution of 32³. 
 
 ```sh
 python run.py --model_name ADSKAILab/Make-A-Shape-voxel-32res-20m --voxel_files examples/voxel/voxel_32.json --output_dir examples --output_format obj
