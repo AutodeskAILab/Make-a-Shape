@@ -4,7 +4,7 @@
 
 This is the official codebase for the ICML paper **Make-A-Shape: a Ten-Million-scale 3D Shape Model**
 
-## [Project](https://www.research.autodesk.com/publications/generative-ai-make-a-shape/) [Page](https://edward1997104.github.io/make-a-shape/), [ArXiv](https://arxiv.org/abs/2401.11067), [Model](https://github.com/AutodeskAILab/Make-a-Shape), [Demo](https://github.com/AutodeskAILab/Make-a-Shape)
+## [Project](https://www.research.autodesk.com/publications/generative-ai-make-a-shape/) [Page](https://edward1997104.github.io/make-a-shape/), [the ICML paper](https://proceedings.mlr.press/v235/hui24a.html), [Model](https://github.com/AutodeskAILab/Make-a-Shape), [Demo](https://github.com/AutodeskAILab/Make-a-Shape)
 
 ### Tasks
 - [x] Single-view to 3D inference code
