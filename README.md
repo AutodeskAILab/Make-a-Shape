@@ -12,6 +12,7 @@ This is the official codebase for the ICML paper **Make-A-Shape: a Ten-Million-s
 - [x] 16³ resolution Voxel to 3D inference code
 - [x] 32³ resolution Voxel to 3D inference code
 - [ ] Point cloud to 3D inference code
+- [ ] Unconditional 3D generation inference code
       
 ## Getting Started
 
