@@ -130,3 +130,8 @@ python run.py --model_name ADSKAILab/Make-A-Shape-voxel-32res-20m --voxel_files 
   - **resolution:** The grid size of the voxel space (e.g., 16 or 32).
   - **occupancy:** The indices of occupied voxels.
   - **color:** The RGB values for each occupied voxel. 
+
+
+### Google Colab Demo
+
+To quickly try out the Make-A-Shape model without setting up your local environment, check out the [Google Colab Demo](https://colab.research.google.com/drive/1XIoeanLjXIDdLow6qxY7cAZ6YZpqY40d?usp=sharing).
