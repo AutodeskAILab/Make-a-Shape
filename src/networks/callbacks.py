@@ -51,7 +51,7 @@ class EMACallback(Callback):
             self.ema.load_state_dict(self.reload_weight)
             self.reload_weight = None
 
-    def reload_weight_for_pl_modulde(self, pl_module):
+    def reload_weight_for_pl_module(self, pl_module):
         self.ema = ModelEmaV2(pl_module, decay=self.decay, device=None)
         print("Entering the testing steps")
         logging.info("Entering the testing steps")

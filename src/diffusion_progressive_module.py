@@ -104,6 +104,12 @@ class Trainer_Diffusion_Progressive_Network(pl.LightningModule):
                 channel_in=1, channel_out=self.args.voxel_context_dim
             )
 
+        self.ema_state_dict = None
+
+    def on_load_checkpoint(self, checkpoint):
+        # lightning function
+        self.ema_state_dict = checkpoint["state_dict_ema"]
+
     def test_step(self, data, batch_idx):
 
         if self.args.train_mode == "complete":

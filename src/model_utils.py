@@ -3,8 +3,10 @@ import torch
 from src.diffusion_progressive_module import (
     Trainer_Diffusion_Progressive_Network,
 )
+from src.networks.callbacks import EMACallback
 import os
 from huggingface_hub import hf_hub_download
+
 
 
 def load_model(
@@ -17,6 +19,13 @@ def load_model(
         checkpoint_path=checkpoint_path,
         map_location="cpu",
     )
+
+    if model.ema_state_dict is not None:
+        # load EMA weights
+        ema = EMACallback(decay=0.9999)
+        ema.reload_weight = model.ema_state_dict
+        ema.reload_weight_for_pl_module(model)
+        ema.copy_to_pl_module(model)
 
     if compile_model:
         logging.info("Compiling models...")
