@@ -37,7 +37,8 @@ pip install -r requirements.txt
 ### Inference
 
 ### Single-view to 3D
-[![Huggingface space](https://img.shields.io/badge/🤗-Huggingface-yello.svg)](https://huggingface.co/ADSKAILab/Make-A-Shape-single-view-20m)
+
+[![Model on HF](https://huggingface.co/datasets/huggingface/badges/resolve/main/model-on-hf-sm.svg)](https://huggingface.co/ADSKAILab/Make-A-Shape-single-view-20m)
 
 The input data for this method is a single-view image of a 3D object.
 
@@ -46,7 +47,7 @@ python run.py --model_name ADSKAILab/Make-A-Shape-single-view-20m --images examp
 ```
 
 ### Multi-view to 3D
-[![Huggingface space](https://img.shields.io/badge/🤗-Huggingface-yello.svg)](https://huggingface.co/ADSKAILab/Make-A-Shape-multi-view-20m)
+[![Model on HF](https://huggingface.co/datasets/huggingface/badges/resolve/main/model-on-hf-sm.svg)](https://huggingface.co/ADSKAILab/Make-A-Shape-multi-view-20m)
 
 For multi-view input, the model utilizes multiple images of the same object captured from different camera angles. These images should be named according to the index of the camera view parameters as described in [Data Formats](#data-formats)
 
@@ -56,7 +57,7 @@ python run.py --model_name ADSKAILab/Make-A-Shape-multi-view-20m --multi_view_im
 
 
 ### Voxel to 3D (16³ Resolution )
-[![Huggingface space](https://img.shields.io/badge/🤗-Huggingface-yello.svg)](https://huggingface.co/ADSKAILab/Make-A-Shape-voxel-16res-20m)
+[![Model on HF](https://huggingface.co/datasets/huggingface/badges/resolve/main/model-on-hf-sm.svg)](https://huggingface.co/ADSKAILab/Make-A-Shape-voxel-16res-20m)
 
 This model uses a voxelized representation of the object with a resolution of 16³. The voxel file is a JSON containing the folowing keys: `resolution`, `occupancy`, and `color`
 
@@ -65,7 +66,7 @@ python run.py --model_name ADSKAILab/Make-A-Shape-voxel-16res-20m --voxel_files 
 ```
 
 ### Voxel to 3D (32³ Resolution )
-[![Huggingface space](https://img.shields.io/badge/🤗-Huggingface-yello.svg)](https://huggingface.co/ADSKAILab/Make-A-Shape-voxel-32res-20m)
+[![Model on HF](https://huggingface.co/datasets/huggingface/badges/resolve/main/model-on-hf-sm.svg)](https://huggingface.co/ADSKAILab/Make-A-Shape-voxel-32res-20m)
 
 Similar to the 16³ resolution model, but with higher resolution of 32³. 
 
