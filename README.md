@@ -1,10 +1,15 @@
-# Make-A-Shape
-
 ![Sample 3D shapes](https://www.research.autodesk.com/app/uploads/2024/04/make-a-shape-3d-model.png)
 
-This is the official codebase for the ICML paper **Make-A-Shape: a Ten-Million-scale 3D Shape Model**
+# Make-A-Shape
 
-## [Project](https://www.research.autodesk.com/publications/generative-ai-make-a-shape/) [Page](https://edward1997104.github.io/make-a-shape/), [the ICML paper](https://proceedings.mlr.press/v235/hui24a.html), [Model](https://github.com/AutodeskAILab/Make-a-Shape), [Demo](https://github.com/AutodeskAILab/Make-a-Shape)
+[![arXiv](https://img.shields.io/badge/arXiv-2401.11067-b31b1b.svg)](https://arxiv.org/abs/2401.11067) 
+[![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/drive/1XIoeanLjXIDdLow6qxY7cAZ6YZpqY40d?usp=sharing) 
+[![Huggingface space](https://img.shields.io/badge/🤗-Huggingface-yello.svg)](https://huggingface.co/ADSKAILab)
+
+
+This is the official codebase for the ICML paper "**Make-A-Shape: a Ten-Million-scale 3D Shape Model**"
+
+### [Project](https://www.research.autodesk.com/publications/generative-ai-make-a-shape/) [Page](https://edward1997104.github.io/make-a-shape/), [the ICML paper](https://proceedings.mlr.press/v235/hui24a.html), [Models](https://huggingface.co/ADSKAILab), [Colab demo](https://colab.research.google.com/drive/1XIoeanLjXIDdLow6qxY7cAZ6YZpqY40d?usp=sharing)
 
 ### Tasks
 - [x] Single-view to 3D inference code
@@ -32,6 +37,7 @@ pip install -r requirements.txt
 ### Inference
 
 ### Single-view to 3D
+[![Huggingface space](https://img.shields.io/badge/🤗-Huggingface-yello.svg)](https://huggingface.co/ADSKAILab/Make-A-Shape-single-view-20m)
 
 The input data for this method is a single-view image of a 3D object.
 
@@ -40,6 +46,7 @@ python run.py --model_name ADSKAILab/Make-A-Shape-single-view-20m --images examp
 ```
 
 ### Multi-view to 3D
+[![Huggingface space](https://img.shields.io/badge/🤗-Huggingface-yello.svg)](https://huggingface.co/ADSKAILab/Make-A-Shape-multi-view-20m)
 
 For multi-view input, the model utilizes multiple images of the same object captured from different camera angles. These images should be named according to the index of the camera view parameters as described in [Data Formats](#data-formats)
 
@@ -49,6 +56,7 @@ python run.py --model_name ADSKAILab/Make-A-Shape-multi-view-20m --multi_view_im
 
 
 ### Voxel to 3D (16³ Resolution )
+[![Huggingface space](https://img.shields.io/badge/🤗-Huggingface-yello.svg)](https://huggingface.co/ADSKAILab/Make-A-Shape-voxel-16res-20m)
 
 This model uses a voxelized representation of the object with a resolution of 16³. The voxel file is a JSON containing the folowing keys: `resolution`, `occupancy`, and `color`
 
@@ -57,6 +65,7 @@ python run.py --model_name ADSKAILab/Make-A-Shape-voxel-16res-20m --voxel_files 
 ```
 
 ### Voxel to 3D (32³ Resolution )
+[![Huggingface space](https://img.shields.io/badge/🤗-Huggingface-yello.svg)](https://huggingface.co/ADSKAILab/Make-A-Shape-voxel-32res-20m)
 
 Similar to the 16³ resolution model, but with higher resolution of 32³. 
 
