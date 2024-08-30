@@ -3,7 +3,7 @@
 # Make-A-Shape
 
 ![Static Badge](https://img.shields.io/badge/ICML-2024-blue) [![arXiv](https://img.shields.io/badge/arXiv-2401.11067-b31b1b.svg)](https://arxiv.org/abs/2401.11067) [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/drive/1XIoeanLjXIDdLow6qxY7cAZ6YZpqY40d?usp=sharing) 
-[![Huggingface space](https://img.shields.io/badge/🤗-Huggingface-yello.svg)](https://huggingface.co/ADSKAILab)
+[![Huggingface space](https://img.shields.io/badge/🤗-Huggingface-yello.svg)](https://huggingface.co/models?search=ADSKAILab/Make-A-Shape)
 
 
 This is the official codebase for the ICML paper "**Make-A-Shape: a Ten-Million-scale 3D Shape Model**"
