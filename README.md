@@ -19,16 +19,15 @@ This is the official codebase for the ICML paper "**Make-A-Shape: a Ten-Million-
 - [ ] Point cloud to 3D inference code
 - [ ] Unconditional 3D generation inference code
 
-      
 ## Getting Started
 
 ### Installation
 - Python >= 3.10
 - Install CUDA if available
-- Install PyTorch according to your platform: [https://pytorch.org/get-started/locally/](https://pytorch.org/get-started/locally/) 
+- Install PyTorch according to your platform: [https://pytorch.org/get-started/locally/](https://pytorch.org/get-started/locally/)
 - Install other dependencies by `pip install -r requirements.txt`
 
-For example, on AWS EC2 insatnces with PyTorch Deep learning AMI, you can setup the environment as follows:
+For example, on AWS EC2 instances with PyTorch Deep learning AMI, you can setup the environment as follows:
 ```
 conda create -n make-a-shape python==3.10
 conda activate make-a-shape
@@ -43,7 +42,7 @@ pip install -r requirements.txt
 The input data for this method is a single-view image of a 3D object.
 
 ```sh
-python run.py --model_name ADSKAILab/Make-A-Shape-single-view-20m --images examples/single_view/jenga.png --output_dir examples --output_format obj 
+python run.py --model_name ADSKAILab/Make-A-Shape-single-view-20m --images examples/single_view/table.png --output_dir examples --output_format obj
 ```
 
 ### Multi-view to 3D
@@ -52,26 +51,26 @@ python run.py --model_name ADSKAILab/Make-A-Shape-single-view-20m --images examp
 For multi-view input, the model utilizes multiple images of the same object captured from different camera angles. These images should be named according to the index of the camera view parameters as described in [Data Formats](#data-formats)
 
 ```sh
-python run.py --model_name ADSKAILab/Make-A-Shape-multi-view-20m --multi_view_images examples/multi_view/000.png examples/multi_view/006.png examples/multi_view/010.png examples/multi_view/026.png --output_dir examples --output_format obj 
+python run.py --model_name ADSKAILab/Make-A-Shape-multi-view-20m --multi_view_images examples/multi_view/000.png examples/multi_view/006.png examples/multi_view/010.png examples/multi_view/026.png --output_dir examples --output_format obj
 ```
 
 
 ### Voxel to 3D (16³ Resolution )
 [![Model on HF](https://huggingface.co/datasets/huggingface/badges/resolve/main/model-on-hf-sm.svg)](https://huggingface.co/ADSKAILab/Make-A-Shape-voxel-16res-20m)
 
-This model uses a voxelized representation of the object with a resolution of 16³. The voxel file is a JSON containing the folowing keys: `resolution`, `occupancy`, and `color`
+This model uses a voxelized representation of the object with a resolution of 16³. The voxel file is a JSON containing the following keys: `resolution`, `occupancy`, and `color`
 
 ```sh
-python run.py --model_name ADSKAILab/Make-A-Shape-voxel-16res-20m --voxel_files examples/voxel/voxel_16.json --output_dir examples --output_format obj
+python run.py --model_name ADSKAILab/Make-A-Shape-voxel-16res-20m --voxel_files examples/voxel/horse_16.json --output_dir examples --output_format obj
 ```
 
 ### Voxel to 3D (32³ Resolution )
 [![Model on HF](https://huggingface.co/datasets/huggingface/badges/resolve/main/model-on-hf-sm.svg)](https://huggingface.co/ADSKAILab/Make-A-Shape-voxel-32res-20m)
 
-Similar to the 16³ resolution model, but with higher resolution of 32³. 
+Similar to the 16³ resolution model, but with higher resolution of 32³.
 
 ```sh
-python run.py --model_name ADSKAILab/Make-A-Shape-voxel-32res-20m --voxel_files examples/voxel/voxel_32.json --output_dir examples --output_format obj
+python run.py --model_name ADSKAILab/Make-A-Shape-voxel-32res-20m --voxel_files examples/voxel/horse_32.json --output_dir examples --output_format obj
 ```
 
 ### Data Formats
@@ -140,7 +139,7 @@ python run.py --model_name ADSKAILab/Make-A-Shape-voxel-32res-20m --voxel_files 
 - **Voxel Input:** A JSON file containing a voxelized representation of the object. The JSON includes:
   - **resolution:** The grid size of the voxel space (e.g., 16 or 32).
   - **occupancy:** The indices of occupied voxels.
-  - **color:** The RGB values for each occupied voxel. 
+  - **color:** The RGB values for each occupied voxel.
 
 
 ### Google Colab Demo
