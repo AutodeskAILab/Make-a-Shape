@@ -56,7 +56,8 @@ def add_args(parser):
                 "ADSKAILab/Make-A-Shape-multi-view-20m",
                 "ADSKAILab/Make-A-Shape-voxel-16res-20m",
                 "ADSKAILab/Make-A-Shape-voxel-32res-20m",
-                "ADSKAILab/Make-A-Shape-voxel-16res-20m"
+                "ADSKAILab/Make-A-Shape-voxel-16res-20m",
+                "ADSKAILab/Make-A-Shape-point-cloud-20m"
         ],
         help="Model name (default: %(default)s).",
     )
