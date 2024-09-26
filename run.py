@@ -219,6 +219,7 @@ if __name__ == "__main__":
             print(f"Processing pointcloud file: {pointcloud_file}")
             data = get_pointcloud_data(
                 pointcloud_file=Path(pointcloud_file),
+                device=model.device,
                 use_pc_samples=args.use_pc_samples,
                 sample_num=args.sample_num,
             )

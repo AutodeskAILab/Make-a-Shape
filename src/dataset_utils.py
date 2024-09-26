@@ -187,11 +187,16 @@ def get_voxel_data_json(voxel_file, voxel_resolution, device):
 
     return data
 
-def get_pointcloud_data(pointcloud_file, use_pc_samples: bool = False, sample_num: int = 2048):
+def get_pointcloud_data(pointcloud_file, device, use_pc_samples: bool = False, sample_num: int = 2048,):
     # loading arr
     loaded_results = load_arr_file(
         file=pointcloud_file, keys=["points"], file_type="h5df"
     )
+
+    if isinstance(pointcloud_file, str):
+        file_base_name = osp.basename(pointcloud_file).split(".")[0]
+    else:
+        file_base_name = uuid.uuid4()
 
     ## add sampling code
     if use_pc_samples:
@@ -201,7 +206,9 @@ def get_pointcloud_data(pointcloud_file, use_pc_samples: bool = False, sample_nu
         ]
 
     data = {}
-    data["points"] = loaded_results["points"].astype(np.float32)
+    data["points"] =  torch.from_numpy(loaded_results["points"].astype(np.float32)).unsqueeze(0).float()
+    data["low"] = torch.zeros((1, 1, 46, 46, 46)).to(device)
+    data["id"] = [file_base_name]
     return data
 
 
