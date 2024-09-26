@@ -187,6 +187,22 @@ def get_voxel_data_json(voxel_file, voxel_resolution, device):
 
     return data
 
+def get_pointcloud_data(pointcloud_file, use_pc_samples: bool = False, sample_num: int = 2048):
+    # loading arr
+    loaded_results = load_arr_file(
+        file=pointcloud_file, keys=["points"], file_type="h5df"
+    )
+
+    ## add sampling code
+    if use_pc_samples:
+        perm = np.random.permutation(loaded_results["points"].shape[0])
+        loaded_results["points"] = loaded_results["points"][perm][
+            :sample_num
+        ]
+
+    data = {}
+    data["points"] = loaded_results["points"].astype(np.float32)
+    return data
 
 def get_image_transform(args, train_step=False):
 

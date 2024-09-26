@@ -48,7 +48,7 @@ class Model:
         device = (
             torch.device("cuda") if torch.cuda.is_available() else torch.device("cpu")
         )
-        model = model = load_model(
+        model = load_model(
             checkpoint_path,
             compile_model=False,
             device=device,
