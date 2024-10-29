@@ -73,6 +73,15 @@ Similar to the 16³ resolution model, but with higher resolution of 32³.
 python run.py --model_name ADSKAILab/Make-A-Shape-voxel-32res-20m --voxel_files examples/voxel/horse_32.json --output_dir examples --output_format obj
 ```
 
+### Point Cloud to 3D
+[![Model on HF](https://huggingface.co/datasets/huggingface/badges/resolve/main/model-on-hf-sm.svg)](ADSKAILab/Make-A-Shape-point-cloud-20m)
+
+This model uses a point cloud representation of the object.
+
+```sh
+python run.py --model_name ADSKAILab/Make-A-Shape-point-cloud-20m --pointcloud_files examples/pointcloud/plane.h5df --output_dir examples --output_format obj
+```
+
 ### Data Formats
 
 - **Single-View Input:** A single image file (e.g., `.png`, `.jpg`) depicting the 3D object.
@@ -141,6 +150,7 @@ python run.py --model_name ADSKAILab/Make-A-Shape-voxel-32res-20m --voxel_files 
   - **occupancy:** The indices of occupied voxels.
   - **color:** The RGB values for each occupied voxel.
 
+- **Point Cloud Input:** A HDF5 file containing a point cloud representation of the object.
 
 ### Google Colab Demo
 

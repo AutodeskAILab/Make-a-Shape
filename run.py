@@ -8,6 +8,7 @@ from src.dataset_utils import (
     get_singleview_data,
     get_multiview_data,
     get_voxel_data_json,
+    get_pointcloud_data
 )
 from src.model_utils import Model
 import argparse
@@ -39,6 +40,14 @@ def add_args(parser):
         nargs="+",
         help="Path to input voxel files. A 3D object will be generated from each voxel file.",
     )
+    input_data_group.add_argument(
+        "--pointcloud_files",
+        type=str,
+        nargs="+",
+        help="Path to input pointcloud files. A 3D object will be generated from each pointcloud file.",
+    )
+    parser.add_argument("--use_pc_samples", help="use_pc_samples", action="store_true")
+    parser.add_argument("--sample_num", type=int, default=2048, help="sample_num")
     parser.add_argument(
         "--model_name",
         type=str,
@@ -47,7 +56,8 @@ def add_args(parser):
                 "ADSKAILab/Make-A-Shape-multi-view-20m",
                 "ADSKAILab/Make-A-Shape-voxel-16res-20m",
                 "ADSKAILab/Make-A-Shape-voxel-32res-20m",
-                "ADSKAILab/Make-A-Shape-voxel-16res-20m"
+                "ADSKAILab/Make-A-Shape-voxel-16res-20m",
+                "ADSKAILab/Make-A-Shape-point-cloud-20m"
         ],
         help="Model name (default: %(default)s).",
     )
@@ -193,6 +203,28 @@ if __name__ == "__main__":
             )
             data_idx = 0
             save_dir = Path(args.output_dir) / Path(voxel_file).stem
+            generate_3d_object(
+                model,
+                data,
+                data_idx,
+                args.scale,
+                args.diffusion_rescale_timestep,
+                save_dir,
+                args.output_format,
+                args.target_num_faces,
+                args.seed,
+            )
+    elif args.pointcloud_files:
+        for pointcloud_file in args.pointcloud_files:
+            print(f"Processing pointcloud file: {pointcloud_file}")
+            data = get_pointcloud_data(
+                pointcloud_file=Path(pointcloud_file),
+                device=model.device,
+                use_pc_samples=args.use_pc_samples,
+                sample_num=args.sample_num,
+            )
+            data_idx = 0
+            save_dir = Path(args.output_dir) / Path(pointcloud_file).stem
             generate_3d_object(
                 model,
                 data,
